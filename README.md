@@ -1,6 +1,6 @@
-# Ansible role BIND
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ckaserer/ansible-role-bind/CI?style=flat-square)](https://github.com/ckaserer/ansible-role-bind/actions?query=workflow%3ACI) ![bsd](https://img.shields.io/badge/license-BSD-%20brightgreen.svg?style=flat-square) ![Maintenance](https://img.shields.io/maintenance/yes/2021?style=flat-square)
 
-[![Actions Status](https://github.com/bertvv/ansible-role-bind/workflows/CI/badge.svg)](https://github.com/bertvv/ansible-role-bind/actions)
+# ckaserer.bind
 
 An Ansible role for setting up ISC BIND as an **authoritative-only** DNS server for multiple domains. Specifically, the responsibilities of this role are to:
 
@@ -10,7 +10,7 @@ An Ansible role for setting up ISC BIND as an **authoritative-only** DNS server 
 
 This role supports multiple forward and reverse zones, including for IPv6. Although enabling recursion is supported (albeit *strongly* discouraged), consider using another role if you want to set up a caching or forwarding name server.
 
-If you like/use this role, please consider giving it a star and rating it on the role's [Ansible Galaxy page](https://galaxy.ansible.com/bertvv/bind). Thanks!
+If you like/use this role, please consider giving it a star and rating it on the role's [Ansible Galaxy page](https://galaxy.ansible.com/ckaserer/bind). Thanks!
 
 See the [change log](CHANGELOG.md) for notable changes between versions.
 
@@ -333,7 +333,7 @@ molecule/shared_inventory
 
 ## Testing
 
-This role is tested using [Ansible Molecule](https://molecule.readthedocs.io/). Tests are launched automatically on [Github Actions](https://github.com/bertvv/ansible-role-bind/actions) after each commit and PR.
+This role is tested using [Ansible Molecule](https://molecule.readthedocs.io/). Tests are launched automatically on [Github Actions](https://github.com/ckaserer/ansible-role-bind/actions) after each commit and PR.
 
 This Molecule configuration will:
 
@@ -387,7 +387,7 @@ Workaround:
 1. Run molecule linter: `molecule lint`
 1. Provision containers: `molecule converge`
 2. Connect to container: `molecule login --host ns1`
-3. Go to role directory: `cd /etc/ansible/roles/bertvv.bind`
+3. Go to role directory: `cd /etc/ansible/roles/ckaserer.bind`
 4. Run verify playbook:
 ```
 ansible-playbook -c local -i "`hostname`," -i molecule/default/inventory.ini molecule/default/verify.yml
