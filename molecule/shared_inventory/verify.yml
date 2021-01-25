@@ -103,3 +103,4 @@
         that:
           - lookup('dig', '_kerberos.acme-inc.com/TXT', local_dns) == 'KERBEROS.ACME-INC.COM'
           - lookup('dig', 'acme-inc.com/TXT', local_dns).split(',') | sort | join(',') == 'more text,some text'
+...

@@ -1,5 +1,4 @@
 ---
-
 bind_python_version: "{{ bind_default_python_version }}"
 
 bind_log: "data/named.run"
@@ -85,3 +84,4 @@ bind_zone_file_mode: "0640"
 bind_dns64: false
 bind_dns64_clients:
   - "any"
+...

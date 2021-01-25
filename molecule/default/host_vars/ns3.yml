@@ -22,3 +22,4 @@ bind_zones:
       - '10.11'
     ipv6_networks:
       - '2001:db8::/48'
+...

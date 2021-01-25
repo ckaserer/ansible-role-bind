@@ -93,3 +93,4 @@ provisioner:
 # Runs the verify.yml playbook
 verifier:
   name: ansible
+...

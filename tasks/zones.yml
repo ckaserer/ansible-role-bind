@@ -149,3 +149,4 @@
     (host_all_addresses | intersect(item[0].primaries) | length > 0)))
   notify: reload bind
   tags: bind
+...

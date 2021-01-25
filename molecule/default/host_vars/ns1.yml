@@ -94,3 +94,4 @@ bind_zones:
         text:
           - 'some text'
           - 'more text'
+...
