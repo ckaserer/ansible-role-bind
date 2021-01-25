@@ -1,50 +1,78 @@
 ---
 name: CI
-'on':
-  pull_request:
+
+on:
   push:
     branches:
-      - master
+      - '*'
+    tags-ignore:
+      - '*'
+  schedule:
+    - cron: "30 8 * * 3"
+
+defaults:
+  run:
+    working-directory: 'ckaserer.bind'
 
 jobs:
+  linter:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          path: 'ckaserer.bind'
 
-  test:
+      - name: Lint Code Base
+        uses: github/super-linter@v3
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          FILTER_REGEX_EXCLUDE: ".*.md"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  molecule:
     name: Molecule
     runs-on: ubuntu-latest
     strategy:
       matrix:
         distro:
-          - centos7
-          - centos8
-          - debian8
-          - debian9
-          - debian10
-          - ubuntu1604
-          - ubuntu1804
           - ubuntu2004
+          - debian10
+      fail-fast: false
 
     steps:
-      - name: Check out the codebase.
+      - name: Checkout Code
         uses: actions/checkout@v2
+        with:
+          path: 'ckaserer.bind'
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-
-      - name: Install test dependencies.
-        run: pip3 install molecule molecule-docker yamllint ansible-lint docker netaddr dnspython
-
-      - name: Run Molecule Primary/Secondary/Forwarder tests
-        run: molecule test
+          
+      - name: Install Dependencies
+        run: pip3 install -r requirements.txt
+          
+      - name: Run Molecule tests
+        run: molecule test --all
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
 
-      - name: Run Molecule Shread Inventory tests
-        run: molecule test --scenario-name shared_inventory
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
+  merge:
+    name: Merge to main
+    runs-on: ubuntu-latest
+    needs: 
+      - linter
+      - molecule
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: main
+...
