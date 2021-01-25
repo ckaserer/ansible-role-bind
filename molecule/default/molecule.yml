@@ -11,8 +11,7 @@ driver:
 # a linting error.
 lint: |
   set -e
-  yamllint .
-  ansible-lint -x 106
+  ansible-lint
 
 platforms:
   # Set name and hostname
