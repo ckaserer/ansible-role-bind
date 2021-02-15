@@ -3,7 +3,13 @@
 
 - name: Converge
   hosts: all
-
-  roles:
-    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+  pre_tasks: 
+    - name: Update cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+  tasks:
+    - name: Include bind
+      include_role:
+        name: ckaserer.bind
 ...
