@@ -1,4 +1,5 @@
 molecule
+ansible
 ansible-lint
 docker
 molecule-docker

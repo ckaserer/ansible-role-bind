@@ -12,7 +12,7 @@
   assert:
     that:
       - item.primaries is defined or item.forwarders is defined
-    quiet: yes
+    quiet: true
   loop: "{{ bind_zones }}"
   loop_control:
     label: "{{ item.name }}"
@@ -21,8 +21,8 @@
 # Fix molecule and ci failures
 - name: Update package cache for Debian based distros
   apt:
-    update_cache: yes
-  become: yes
+    update_cache: true
+  become: true
   changed_when: false
   when: ansible_os_family == 'Debian'
   tags: bind
@@ -37,7 +37,7 @@
   package:
     pkg: "{{ item }}"
     state: present
-  become: yes
+  become: true
   with_items:
     - "{{ bind_packages }}"
   tags: bind
@@ -49,7 +49,7 @@
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
     mode: 0770
-  become: yes
+  become: true
   with_items:
     - "{{ bind_dir }}/dynamic"
     - "{{ bind_dir }}/data"
@@ -64,7 +64,7 @@
     group: "{{ bind_group }}"
     mode: 0770
     setype: named_cache_t
-  become: yes
+  become: true
   tags: bind
 
 - name: Create serial, based on UTC UNIX time
@@ -83,7 +83,7 @@
     mode: 0640
     owner: root
     group: "{{ bind_group }}"
-  become: yes
+  become: true
   when: bind_dns_keys is defined and bind_dns_keys|length > 0
   notify: reload bind
   tags: bind
@@ -101,7 +101,7 @@
     mode: 0640
     setype: named_conf_t
     validate: 'named-checkconf %s'
-  become: yes
+  become: true
   notify: reload bind
   tags: bind
 
@@ -110,6 +110,6 @@
     name: "{{ bind_service }}"
     state: started
     enabled: true
-  become: yes
+  become: true
   tags: bind
 ...
