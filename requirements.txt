@@ -1,7 +1,10 @@
-molecule
 ansible
 ansible-lint
+
 docker
+
+molecule
 molecule-docker
+
 netaddr
 dnspython
