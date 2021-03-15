@@ -12,7 +12,7 @@ name: CI
 
 defaults:
   run:
-    working-directory: ckaserer.bind
+    working-directory: gepaplexx.bind
 
 jobs:
   linter:
@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
-          path: ckaserer.bind
+          path: gepaplexx.bind
 
       - name: Lint Code Base
         uses: github/super-linter@v3
@@ -46,7 +46,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
-          path: ckaserer.bind
+          path: gepaplexx.bind
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
@@ -90,7 +90,7 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_ICON: https://github.com/ckaserer/logos/raw/master/ansible.png
+          SLACK_ICON: https://avatars.githubusercontent.com/u/74975412?s=200&v=4
           SLACK_USERNAME: ${{ github.repository }}
           SLACK_COLOR: '#ff0033'
           SLACK_FOOTER: ''

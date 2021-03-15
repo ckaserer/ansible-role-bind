@@ -8,7 +8,7 @@ An Ansible role for setting up ISC BIND as an **authoritative-only** DNS server 
 
 This role supports multiple forward and reverse zones, including for IPv6. Although enabling recursion is supported (albeit *strongly* discouraged), consider using another role if you want to set up a caching or forwarding name server.
 
-If you like/use this role, please consider giving it a star and rating it on the role's [Ansible Galaxy page](https://galaxy.ansible.com/ckaserer/bind).Thanks!
+If you like/use this role, please consider giving it a star and rating it on the role's [Ansible Galaxy page](https://galaxy.ansible.com/gepaplexx/dns).Thanks!
 
 See the [change log](CHANGELOG.md) for notable changes between versions.
 
@@ -400,7 +400,7 @@ Workaround:
 . Run molecule linter: `molecule lint`
 . Provision containers: `molecule converge`
 . Connect to container: `molecule login --host ns1`
-. Go to role directory: `cd /etc/ansible/roles/ckaserer.bind`
+. Go to role directory: `cd /etc/ansible/roles/gepaplexx.dns`
 . Run verify playbook:
 
 [source]
