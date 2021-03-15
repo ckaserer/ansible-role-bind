@@ -8,7 +8,7 @@ name: Release
 
 defaults:
   run:
-    working-directory:
+    working-directory: gepaplexx.dns
 
 jobs:
   release:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path:
+          path: gepaplexx.dns
 
       - name: Create Release
         uses: actions/create-release@v1

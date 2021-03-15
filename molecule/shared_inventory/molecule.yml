@@ -43,7 +43,7 @@ platforms:
     networks:
       - name: bind
         ipv4_address: "10.11.0.5"
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos8}-ansible:latest"
+    image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2004}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
