@@ -12,5 +12,5 @@
   tasks:
     - name: Include bind
       include_role:
-        name: gepaplexx.bind
+        name:
 ...

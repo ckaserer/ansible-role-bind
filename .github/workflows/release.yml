@@ -8,7 +8,7 @@ name: Release
 
 defaults:
   run:
-    working-directory: gepaplexx.bind
+    working-directory:
 
 jobs:
   release:
@@ -18,7 +18,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path: gepaplexx.bind
+          path:
 
       - name: Create Release
         uses: actions/create-release@v1

@@ -1,4 +1,4 @@
-= gepaplexx.bind
+=
 
 An Ansible role for setting up ISC BIND as an **authoritative-only** DNS server for multiple domains.Specifically, the responsibilities of this role are to:
 
