@@ -9,7 +9,7 @@
         update_cache: true
         cache_valid_time: 3600
   tasks:
-    - name:
+    - name: "Include ansible role"
       include_role:
-        name:
+        name: "gepaplexx.dns"
 ...
