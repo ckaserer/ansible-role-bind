@@ -5,7 +5,8 @@ galaxy_info:
     Sets up ISC BIND as an authoritative DNS server for one or more domains
     (primary and/or secondary).
   license: BSD
-  role_name: bind
+  role_name: dns
+  namespace: gepaplexx
   min_ansible_version: 2.10
   platforms:
     - name: Ubuntu
